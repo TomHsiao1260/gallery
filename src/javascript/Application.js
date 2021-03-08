@@ -26,6 +26,10 @@ export default class Application {
     setConfig() {
         this.config = {};
         this.config.debug = window.location.hash === '#debug';
+
+        this.config = {};
+        this.config.numDrawing = 10;
+        this.config.distanceDrawing = 2;
     }
 
     setDebug() {
@@ -57,6 +61,7 @@ export default class Application {
             time: this.time,
             sizes: this.sizes,
             renderer: this.renderer,
+            config: this.config,
             debug: this.debug,
         });
 
@@ -74,6 +79,7 @@ export default class Application {
             sizes: this.sizes,
             camera: this.camera,
             renderer: this.renderer,
+            config: this.config,
             debug: this.debug,
         });
         this.scene.add(this.world.container);

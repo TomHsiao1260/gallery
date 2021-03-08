@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 
 import Materials from './Materials';
+import Walls from './Walls';
 import Torus from './Torus';
 import Plane from './Plane';
 import Fox from './Fox';
@@ -12,6 +13,7 @@ export default class World {
         this.sizes = _option.sizes;
         this.camera = _option.camera;
         this.renderer = _option.renderer;
+        this.config = _option.config;
         this.debug = _option.debug;
 
         this.container = new THREE.Object3D();
@@ -36,9 +38,18 @@ export default class World {
     start() {
         this.materials = new Materials({ resources: this.resources });
 
-        this.setTorus();
-        this.setPlane();
-        this.setFox();
+        this.setWalls();
+        // this.setTorus();
+        // this.setPlane();
+        // this.setFox();
+    }
+
+    setWalls() {
+        this.walls = new Walls({
+            config: this.config,
+            debug: this.debugFolder,
+        });
+        this.container.add(this.walls.container);
     }
 
     setTorus() {
